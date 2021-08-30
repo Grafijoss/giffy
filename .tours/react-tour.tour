@@ -1,0 +1,91 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "react tour",
+  "steps": [
+    {
+      "file": "package.json",
+      "description": "## package.json\r\n\r\n```javascript\r\n{\r\n  \"name\": \"giffy\",  // nombre\r\n  \"version\": \"0.1.0\",\r\n  \"private\": true,\r\n  \"dependencies\": { // dependencias\r\n    \"@emotion/core\": \"^10.0.28\",\r\n    \"@emotion/styled\": \"^10.0.27\",\r\n    \"@testing-library/jest-dom\": \"^4.2.4\",\r\n    \"@testing-library/react\": \"^9.3.2\",\r\n    \"@testing-library/user-event\": \"^7.1.2\",\r\n    \"emotion-theming\": \"^10.0.27\",\r\n    \"formik\": \"^2.1.4\",\r\n    \"intersection-observer\": \"0.10.0\",\r\n    \"just-debounce-it\": \"1.1.0\",\r\n    \"react\": \"16.13.1\",\r\n    \"react-dom\": \"16.13.1\",\r\n    \"react-helmet\": \"^6.0.0\",\r\n    \"react-hook-form\": \"^5.7.2\",\r\n    \"react-scripts\": \"3.4.1\",\r\n    \"wouter\": \"2.4.0\" // alternativa a router dom\r\n    // no tiene dependencias, pesa menos, no se tiene que envolver con el componente router\r\n  },\r\n  \"scripts\": { // scripts para ejecutar en el proyecto\r\n    \"deploy\": \"vercel\",\r\n    \"start\": \"react-scripts start\",\r\n    \"build\": \"react-scripts build\", // genera estaticos\r\n    \"test\": \"react-scripts test\",\r\n    \"eject\": \"react-scripts eject\" // quitar la configuracion de create-react-app y crear una configuracion custom\r\n  },\r\n  \"eslintConfig\": { // configuracion de eslint por default\r\n    \"extends\": \"react-app\"\r\n  },\r\n  \"browserslist\": { // navegadores soportados\r\n    \"production\": [\r\n      \">0.2%\",\r\n      \"not dead\",\r\n      \"not op_mini all\"\r\n    ],\r\n    \"development\": [\r\n      \"last 1 chrome version\",\r\n      \"last 1 firefox version\",\r\n      \"last 1 safari version\"\r\n    ]\r\n  },\r\n  \"devDependencies\": {\r\n    \"@testing-library/react-hooks\": \"^3.3.0\",\r\n    \"react-test-renderer\": \"^16.13.1\"\r\n  }\r\n}\r\n\r\n```",
+      "line": 2,
+      "selection": {
+        "start": {
+          "line": 1,
+          "character": 1
+        },
+        "end": {
+          "line": 49,
+          "character": 1
+        }
+      }
+    },
+    {
+      "file": "src/App.js",
+      "description": "## routes con wouter\r\n\r\n```javascript\r\nimport { Link, Route, Switch } from \"wouter\";\r\n\r\n// Route: de forma declarativa decimos que rutas tiene la aplicacion \r\n<Route\r\n    component={SearchResults} // componente a renderizar\r\n    path=\"/search/:keyword/:rating?\" // ruta con parametro dinamico\r\n/>\r\n\r\n// keyword llegara dentro de los params al componente\r\nconst { keyword, rating } = params\r\n\r\n// link evita que la pagina se refresque\r\n// usa el history del navegador history.push\r\n// actualiza el enlace el router de wouter hace match\r\n// y cambia el componente que va a renderizar\r\n<Link to=\"/\">\r\n    <figure className=\"App-logo\">\r\n        <img alt=\"Giffy logo\" src=\"/logo.png\" />\r\n    </figure>\r\n</Link>\r\n\r\n\r\n<Switch>\r\n    <Route component={HomePage} path=\"/\" />\r\n    <Route\r\n        component={SearchResults}\r\n        path=\"/search/:keyword/:rating?\"\r\n    />\r\n    <Route component={Detail} path=\"/gif/:id\" />\r\n    <Route component={Login} path=\"/login\" />\r\n    <Route component={Register} path=\"/register\" />\r\n    <Route component={ErrorPage} path=\"/:rest*\" />\r\n</Switch>\r\n```\r\n",
+      "line": 32,
+      "selection": {
+        "start": {
+          "line": 26,
+          "character": 13
+        },
+        "end": {
+          "line": 30,
+          "character": 20
+        }
+      }
+    },
+    {
+      "file": "public/index.html",
+      "description": "## public\r\n\r\nEn esta carpeta se ubican archivos que queremos que se vean hacia afuera no dependen de react () imagenes videos favicon etc\r\n\r\nindex HTML la aplicacion se va a renderizar en root\r\n\r\n```html\r\n<div id=\"root\"></div>\r\n```\r\n",
+      "line": 1,
+      "selection": {
+        "start": {
+          "line": 15,
+          "character": 5
+        },
+        "end": {
+          "line": 15,
+          "character": 26
+        }
+      }
+    },
+    {
+      "file": "src/App.js",
+      "description": "## App \r\n\r\ncomponente principal de la aplicacion",
+      "line": 21
+    },
+    {
+      "file": "src/index.js",
+      "description": "## index.js \r\n\r\npunto de entrada de la aplicacion, desde webpack le indicamos que desde este punto debe iniciar la aplicacion\r\n\r\ndesde este punto vamos a comenzar a importar modulos",
+      "line": 9
+    },
+    {
+      "file": "src/services/getGifs.js",
+      "description": "## fetch\r\n\r\n```javascript\r\nfetch(apiURL) // url a ña que estamos apuntando\r\n    .then((res) => res.json()) // la respuesta se debe pasar a json\r\n    .then(fromApiResponseToGifs) // las respuetas siempre son promesas\r\n}\r\n```\r\n\r\n",
+      "line": 26,
+      "selection": {
+        "start": {
+          "line": 26,
+          "character": 10
+        },
+        "end": {
+          "line": 29,
+          "character": 2
+        }
+      }
+    },
+    {
+      "file": "src/hooks/useGifs.js",
+      "description": "## useEffect\r\n\r\n- use effect va a fucionar solo la primera vez si no definimos dependencias\r\n\r\n```javascript\r\nuseEffect(function () {\r\n\r\n    if (page === INITIAL_PAGE) return\r\n\r\n    setLoadingNextPage(true)\r\n\r\n    getGifs({ keyword: keywordToUse, page, rating })\r\n      .then(nextGifs => {\r\n        // prevGifs es el estado previo \r\n        // setGifs(prevGifs => prevGifs.concat(nextGifs))\r\n        setGifs(prevGifs => prevGifs.concat(nextGifs))\r\n        setLoadingNextPage(false)\r\n      })\r\n  }, [keywordToUse, page, rating, setGifs]) //dependencias \r\n```\r\n",
+      "line": 29,
+      "selection": {
+        "start": {
+          "line": 18,
+          "character": 5
+        },
+        "end": {
+          "line": 18,
+          "character": 15
+        }
+      }
+    }
+  ]
+}
